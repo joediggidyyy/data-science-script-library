@@ -1,0 +1,9 @@
+{
+  "repo": "data-science-script-library",
+  "guidelines": {
+    "standalone_scripts": true,
+    "no_secrets": true,
+    "prefer_cli_args": true,
+    "prefer_small_scripts": true
+  }
+}

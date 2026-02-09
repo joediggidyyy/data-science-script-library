@@ -1,0 +1,18 @@
+# Full dependencies (core + optional add-ons)
+
+-r requirements-core.txt
+
+# Docs / slides
+markdown2>=2.4
+
+# Plots
+matplotlib>=3.7
+
+# ML evaluation
+scikit-learn>=1.2
+
+# Parquet inspection
+pyarrow>=14.0
+
+# Optional: PDF export via webpdf (headless chromium)
+nbconvert[webpdf]>=7.10
