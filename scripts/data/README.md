@@ -17,6 +17,10 @@ Small, dependency-free utilities for “data plumbing” tasks: converting logs 
   - Inspect Parquet schema + basic metadata (requires `pyarrow`).
 - `inspect_jsonl_gz_archive.py`
   - Inspect `.jsonl.gz` archives (record counts, key frequencies, sample records).
+- `validate_jsonl_records.py`
+  - Validate JSONL records with configurable forbidden/allowed key policies and optional strict unknown-key handling.
+- `build_feature_dataset.py`
+  - Build feature datasets from JSONL into `features.csv`, `labels.csv` (optional), `splits.csv`, and `dataset_manifest.json`.
 - `metrics_exporter.py` (deprecated)
   - Backwards-compatible alias that enforces the historical stable column ordering used by some older CodeSentinel metrics logs.
 
@@ -68,4 +72,16 @@ Inspect a gzipped JSONL archive:
 
 ```text
 python scripts/data/inspect_jsonl_gz_archive.py data.jsonl.gz --top 30 --sample 1
+```
+
+Validate JSONL records with strict unknown-key policy:
+
+```text
+python scripts/data/validate_jsonl_records.py --input data.jsonl --allowed-keys record_id,score,label --strict-unknown-keys --json
+```
+
+Build a feature dataset from telemetry-like JSONL:
+
+```text
+python scripts/data/build_feature_dataset.py --input data.jsonl --out-dir out/dataset --seed 1337
 ```

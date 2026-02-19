@@ -36,3 +36,57 @@ Generate remediation triage from latest crash evidence:
 python scripts/repo/audit/triage_vscode_crash_remediation.py --dry-run
 ```
 
+Audit repository hygiene snapshot:
+
+```text
+python scripts/repo/audit/audit_repo_health_snapshot.py --repo-root . --dry-run
+```
+
+Audit runtime artifacts snapshot:
+
+```text
+python scripts/repo/audit/audit_runtime_artifacts_snapshot.py --runtime-root . --heartbeat watchdog=health/watchdog.heartbeat --dry-run
+```
+
+Audit status drift against task SSOT + dashboard:
+
+```text
+python scripts/repo/audit/audit_status_drift.py --tasks-json operations/tasks.json --dashboard-md docs/dashboards/room/JOBS_DASHBOARD.md --dry-run
+```
+
+Report runtime parameter surface (names-only):
+
+```text
+python scripts/repo/audit/report_runtime_parameters.py --runtime-root . --env-name OPENAI_API_KEY --check-path logs/health/watchdog.heartbeat --dry-run
+```
+
+Audit web dashboard endpoints (names-only):
+
+```text
+python scripts/repo/audit/audit_web_dashboard_endpoints.py --base-url http://127.0.0.1:8899 --endpoint / --endpoint /health --dry-run
+```
+
+Check process PID files:
+
+```text
+python scripts/repo/audit/check_pidfiles_status.py --pidfile agent=./agent.pid --pidfile dashboard=./dashboard.pid --json
+```
+
+Set a generalized repository hash baseline:
+
+```text
+python scripts/repo/audit/baseline_set_hashes.py --root . --baseline .baseline_hashes.json
+```
+
+Verify repository files against baseline hashes:
+
+```text
+python scripts/repo/audit/baseline_verify_hashes.py --root . --baseline .baseline_hashes.json --json
+```
+
+Reset baseline file via archive-first workflow:
+
+```text
+python scripts/repo/audit/baseline_reset_hashes.py --root . --baseline .baseline_hashes.json --archive-dir report_tmp/archive/baseline_hash
+```
+

@@ -16,6 +16,8 @@ A small library of standalone scripts that are useful for students doing data sc
   - [`data_cleaning_recipes.py`](scripts/data/data_cleaning_recipes.py) — Conservative CSV cleanup recipes (normalize columns, trim whitespace, drop empties/dupes).
   - [`parquet_inspect.py`](scripts/data/parquet_inspect.py) — Inspect Parquet schema + basic metadata (requires `pyarrow`).
   - [`inspect_jsonl_gz_archive.py`](scripts/data/inspect_jsonl_gz_archive.py) — Inspect `.jsonl.gz` archives (record counts, key frequencies, sample records).
+  - [`validate_jsonl_records.py`](scripts/data/validate_jsonl_records.py) — Validate JSONL records with configurable forbidden/allowed key policies.
+  - [`build_feature_dataset.py`](scripts/data/build_feature_dataset.py) — Build feature datasets from JSONL into features/labels/splits + manifest artifacts.
   - Back-compat alias: [`metrics_exporter.py`](scripts/data/metrics_exporter.py) (deprecated)
 
 ### Docs
@@ -29,6 +31,10 @@ A small library of standalone scripts that are useful for students doing data sc
 - [`train_test_split_cli.py`](scripts/ml/train_test_split_cli.py) — Deterministic train/test split for CSV (optional stratification).
 - [`model_eval_report.py`](scripts/ml/model_eval_report.py) — Model evaluation report for classification/regression (JSON + Markdown).
 - [`select_anomaly_threshold.py`](scripts/ml/select_anomaly_threshold.py) — Select anomaly threshold for a target false-positive rate from score distributions.
+- [`evaluate_scores_report.py`](scripts/ml/evaluate_scores_report.py) — Evaluate score thresholds in labeled/unlabeled modes and emit JSON + Markdown reports.
+- [`train_sklearn_model.py`](scripts/ml/train_sklearn_model.py) — Train supervised/unsupervised sklearn models from dataset manifests.
+- [`score_unsupervised_model.py`](scripts/ml/score_unsupervised_model.py) — Score feature records with unsupervised models and emit `record_id,score_raw` CSV.
+- [`run_ml_pipeline_demo.py`](scripts/ml/run_ml_pipeline_demo.py) — Run a synthetic end-to-end demo (build dataset -> train -> score).
 
 ### Notebooks
 - [`export_notebook.py`](scripts/notebooks/export_notebook.py) — Export `.ipynb` to HTML/PDF (supports tag-based removal).
@@ -51,6 +57,12 @@ A small library of standalone scripts that are useful for students doing data sc
 - Audit:
   - [`audit_vscode_crash_logs.py`](scripts/repo/audit/audit_vscode_crash_logs.py) — Collect VS Code crash/instability evidence from local logs.
   - [`triage_vscode_crash_remediation.py`](scripts/repo/audit/triage_vscode_crash_remediation.py) — Generate remediation triage from crash evidence (+ optional attribution).
+  - [`audit_repo_health_snapshot.py`](scripts/repo/audit/audit_repo_health_snapshot.py) — Snapshot repository hygiene findings (tracked-path and ignore-policy checks).
+  - [`audit_runtime_artifacts_snapshot.py`](scripts/repo/audit/audit_runtime_artifacts_snapshot.py) — Snapshot runtime heartbeat/telemetry/log artifact freshness.
+  - [`audit_status_drift.py`](scripts/repo/audit/audit_status_drift.py) — Audit status drift between task SSOT, dashboards, and task documents.
+  - [`report_runtime_parameters.py`](scripts/repo/audit/report_runtime_parameters.py) — Report runtime parameter surface (env names + path checks, names-only).
+  - [`audit_web_dashboard_endpoints.py`](scripts/repo/audit/audit_web_dashboard_endpoints.py) — Audit web dashboard endpoints with names-only response evidence.
+  - [`check_pidfiles_status.py`](scripts/repo/audit/check_pidfiles_status.py) — Check whether PID-file-referenced processes are running.
 
 ## Quick start
 
