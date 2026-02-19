@@ -14,7 +14,7 @@
 | Classification | Public |
 | Execution Window | 2026-02-08 |
 | Operator / Author | ORACL-Prime |
-| Template Basis | `codesentinel/assets/VAULT_templates/reports/CODE_QUALITY_AUDIT_TEMPLATE.md.template` |
+| Template Basis | Internal publication template |
 
 ---
 
@@ -125,4 +125,4 @@ Future audits can track:
 
 ---
 
-*This report was produced by ORACL-Prime using the VAULT template `CODE_QUALITY_AUDIT_TEMPLATE.md.template` as the structural baseline.*
+*This report was produced by ORACL-Prime using an internal publication template as the structural baseline.*

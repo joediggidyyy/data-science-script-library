@@ -72,21 +72,3 @@ Check process PID files:
 python scripts/repo/audit/check_pidfiles_status.py --pidfile agent=./agent.pid --pidfile dashboard=./dashboard.pid --json
 ```
 
-Set a generalized repository hash baseline:
-
-```text
-python scripts/repo/audit/baseline_set_hashes.py --root . --baseline .baseline_hashes.json
-```
-
-Verify repository files against baseline hashes:
-
-```text
-python scripts/repo/audit/baseline_verify_hashes.py --root . --baseline .baseline_hashes.json --json
-```
-
-Reset baseline file via archive-first workflow:
-
-```text
-python scripts/repo/audit/baseline_reset_hashes.py --root . --baseline .baseline_hashes.json --archive-dir report_tmp/archive/baseline_hash
-```
-

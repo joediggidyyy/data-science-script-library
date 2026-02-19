@@ -46,14 +46,3 @@ All notable changes to this project will be documented in this file.
 	- `scripts/repo/audit/check_pidfiles_status.py`
 - Added Batch C planning artifacts, tests, and README index updates.
 
-## 2026-02-22
-
-- Added generalized baseline lifecycle audit scripts:
-	- `scripts/repo/audit/baseline_set_hashes.py`
-	- `scripts/repo/audit/baseline_verify_hashes.py`
-	- `scripts/repo/audit/baseline_reset_hashes.py`
-	- `scripts/repo/audit/_baseline_hash_utils.py`
-- Added tests for baseline lifecycle scripts:
-	- `tests/test_baseline_set_hashes.py`
-	- `tests/test_baseline_verify_hashes.py`
-	- `tests/test_baseline_reset_hashes.py`
