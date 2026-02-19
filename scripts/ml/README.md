@@ -9,6 +9,7 @@ The emphasis is on clarity over cleverness: scripts here are short enough to rea
 - `solver.py` — `ApexRegressor`: projected gradient descent regression with simplex constraints.
 - `train_test_split_cli.py` — Deterministic train/test split for CSV datasets (optional stratification + indices export).
 - `model_eval_report.py` — Evaluation metrics reports for classification/regression from `y_true` and `y_pred` CSVs.
+- `select_anomaly_threshold.py` — Select anomaly threshold from score distributions for a target FPR.
 
 ## Usage examples
 
@@ -49,5 +50,11 @@ Evaluate regression predictions:
 
 ```text
 python scripts/ml/model_eval_report.py --task regression --y-true y_true.csv --y-pred y_pred.csv --out out/
+```
+
+Select threshold for anomaly scores:
+
+```text
+python scripts/ml/select_anomaly_threshold.py --scores scores.csv --target-fpr 0.01 --out-report out/threshold_report.md
 ```
 

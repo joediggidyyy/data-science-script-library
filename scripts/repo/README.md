@@ -8,6 +8,7 @@ These scripts are “report-first” utilities: they produce artifacts you can r
 
 - `inventory/` — build inventories of scripts/files and export to CSV
 - `analysis/` — code analysis utilities (duplicate detection)
+- `audit/` — operational audit utilities (log evidence + remediation triage)
 
 ## Usage examples
 
@@ -21,5 +22,17 @@ Find exact duplicate functions in a Python codebase:
 
 ```text
 python scripts/repo/analysis/find_duplicate_functions.py --root . --out report_tmp/dupes
+```
+
+Audit VS Code crash logs (dry-run):
+
+```text
+python scripts/repo/audit/audit_vscode_crash_logs.py --dry-run
+```
+
+Generate remediation triage from latest crash evidence:
+
+```text
+python scripts/repo/audit/triage_vscode_crash_remediation.py --dry-run
 ```
 

@@ -15,6 +15,7 @@ A small library of standalone scripts that are useful for students doing data sc
   - [`csv_profile_report.py`](scripts/data/csv_profile_report.py) — Profile CSV (missing/uniques/numeric stats + samples) -> Markdown + HTML.
   - [`data_cleaning_recipes.py`](scripts/data/data_cleaning_recipes.py) — Conservative CSV cleanup recipes (normalize columns, trim whitespace, drop empties/dupes).
   - [`parquet_inspect.py`](scripts/data/parquet_inspect.py) — Inspect Parquet schema + basic metadata (requires `pyarrow`).
+  - [`inspect_jsonl_gz_archive.py`](scripts/data/inspect_jsonl_gz_archive.py) — Inspect `.jsonl.gz` archives (record counts, key frequencies, sample records).
   - Back-compat alias: [`metrics_exporter.py`](scripts/data/metrics_exporter.py) (deprecated)
 
 ### Docs
@@ -27,6 +28,7 @@ A small library of standalone scripts that are useful for students doing data sc
 - [`solver.py`](scripts/ml/solver.py) — `ApexRegressor`: projected gradient descent regression with simplex constraints.
 - [`train_test_split_cli.py`](scripts/ml/train_test_split_cli.py) — Deterministic train/test split for CSV (optional stratification).
 - [`model_eval_report.py`](scripts/ml/model_eval_report.py) — Model evaluation report for classification/regression (JSON + Markdown).
+- [`select_anomaly_threshold.py`](scripts/ml/select_anomaly_threshold.py) — Select anomaly threshold for a target false-positive rate from score distributions.
 
 ### Notebooks
 - [`export_notebook.py`](scripts/notebooks/export_notebook.py) — Export `.ipynb` to HTML/PDF (supports tag-based removal).
@@ -35,6 +37,8 @@ A small library of standalone scripts that are useful for students doing data sc
 
 ### Plots
 - [`plot_timeseries_from_csv.py`](scripts/plots/plot_timeseries_from_csv.py) — Quick time-series line charts from CSV -> PNG.
+- [`plot_score_distribution.py`](scripts/plots/plot_score_distribution.py) — Plot score distributions (`score_raw`) with KDE and summary stats.
+- [`plot_threshold_impact.py`](scripts/plots/plot_threshold_impact.py) — Visualize threshold impact and flagged rate over score distributions.
 
 ### Repo helpers
 
@@ -44,6 +48,9 @@ A small library of standalone scripts that are useful for students doing data sc
 - Analysis:
   - [`find_duplicate_functions.py`](scripts/repo/analysis/find_duplicate_functions.py) — Find exact duplicate function bodies.
   - [`find_near_duplicate_functions.py`](scripts/repo/analysis/find_near_duplicate_functions.py) — Find near-duplicate functions via AST-normalized similarity.
+- Audit:
+  - [`audit_vscode_crash_logs.py`](scripts/repo/audit/audit_vscode_crash_logs.py) — Collect VS Code crash/instability evidence from local logs.
+  - [`triage_vscode_crash_remediation.py`](scripts/repo/audit/triage_vscode_crash_remediation.py) — Generate remediation triage from crash evidence (+ optional attribution).
 
 ## Quick start
 
@@ -66,6 +73,7 @@ Optional dependency map (by feature):
 
 - Slides: `markdown2` (`scripts/docs/md_to_slides.py`)
 - Plots: `matplotlib` (`scripts/plots/plot_timeseries_from_csv.py`)
+- Distribution plots: `pandas`, `seaborn`, `matplotlib` (`scripts/plots/plot_score_distribution.py`, `scripts/plots/plot_threshold_impact.py`)
 - ML evaluation: `scikit-learn` (`scripts/ml/model_eval_report.py`)
 - Parquet: `pyarrow` (`scripts/data/parquet_inspect.py`)
 - PDF (web exporter): `nbconvert[webpdf]` (`scripts/notebooks/export_notebook.py`)

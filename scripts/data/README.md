@@ -15,6 +15,8 @@ Small, dependency-free utilities for “data plumbing” tasks: converting logs 
   - Apply small, conservative cleanup steps to a CSV (normalize columns, trim whitespace, drop empties/dupes).
 - `parquet_inspect.py`
   - Inspect Parquet schema + basic metadata (requires `pyarrow`).
+- `inspect_jsonl_gz_archive.py`
+  - Inspect `.jsonl.gz` archives (record counts, key frequencies, sample records).
 - `metrics_exporter.py` (deprecated)
   - Backwards-compatible alias that enforces the historical stable column ordering used by some older CodeSentinel metrics logs.
 
@@ -60,4 +62,10 @@ Inspect a Parquet file (human-readable):
 
 ```text
 python scripts/data/parquet_inspect.py data.parquet
+```
+
+Inspect a gzipped JSONL archive:
+
+```text
+python scripts/data/inspect_jsonl_gz_archive.py data.jsonl.gz --top 30 --sample 1
 ```
