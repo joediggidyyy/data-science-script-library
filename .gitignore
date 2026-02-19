@@ -24,6 +24,13 @@ venv/
 *.bak
 report_tmp/
 outputs/
+duplicate_functions_report.json
+duplicate_functions_report.md
+near_duplicate_functions_report.json
+near_duplicate_functions_report.md
+script_inventory.json
+script_inventory.md
+inventory.csv
 
 # OS / editor
 .DS_Store
