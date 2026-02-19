@@ -27,3 +27,8 @@ Convert the JSON inventory to CSV:
 python scripts/repo/inventory/inventory_json_to_csv.py report_tmp/inventory/script_inventory.json report_tmp/inventory/script_inventory.csv
 ```
 
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- Security guidance: `SECURITY.md`
+

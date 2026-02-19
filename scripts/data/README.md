@@ -85,3 +85,8 @@ Build a feature dataset from telemetry-like JSONL:
 ```text
 python scripts/data/build_feature_dataset.py --input data.jsonl --out-dir out/dataset --seed 1337
 ```
+
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- Security guidance: `SECURITY.md`

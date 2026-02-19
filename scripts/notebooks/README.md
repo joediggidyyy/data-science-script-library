@@ -68,3 +68,9 @@ Tag behavior (set these tags in the notebook UI):
 
 - PDF export can require additional system dependencies depending on the exporter backend.
 
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- Starter notebook template: `notebooks/first_week_lab_template.ipynb`
+- Security guidance: `SECURITY.md`
+

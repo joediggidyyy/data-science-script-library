@@ -21,3 +21,8 @@ Near duplicates (slower, similarity-based):
 python scripts/repo/analysis/find_near_duplicate_functions.py --root . --out report_tmp/near_dupes --threshold 0.9
 ```
 
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- Security guidance: `SECURITY.md`
+

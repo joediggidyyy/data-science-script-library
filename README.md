@@ -4,6 +4,11 @@ A small library of standalone scripts that are useful for students doing data sc
 
 > This Repository is Maintained _by CodeSentinel_
 
+This project is intentionally operated with two complementary outcomes:
+
+- practical script utility for students
+- a subtle, professional exhibition of CodeSentinel maintenance discipline
+
 ## Script Index
 
 ### Benchmarks
@@ -40,6 +45,7 @@ A small library of standalone scripts that are useful for students doing data sc
 - [`export_notebook.py`](scripts/notebooks/export_notebook.py) — Export `.ipynb` to HTML/PDF (supports tag-based removal).
 - [`notebook_scrub_secrets.py`](scripts/notebooks/notebook_scrub_secrets.py) — Redact common secret patterns + clear outputs for safer sharing.
 - [`notebook_parameter_sweep.py`](scripts/notebooks/notebook_parameter_sweep.py) — Inject a `parameters` cell and run a notebook over a parameter grid.
+- [`notebooks/first_week_lab_template.ipynb`](notebooks/first_week_lab_template.ipynb) — Starter lab notebook template (data load + simple plot + reflection prompt).
 
 ### Plots
 - [`plot_timeseries_from_csv.py`](scripts/plots/plot_timeseries_from_csv.py) — Quick time-series line charts from CSV -> PNG.
@@ -63,6 +69,8 @@ A small library of standalone scripts that are useful for students doing data sc
   - [`report_runtime_parameters.py`](scripts/repo/audit/report_runtime_parameters.py) — Report runtime parameter surface (env names + path checks, names-only).
   - [`audit_web_dashboard_endpoints.py`](scripts/repo/audit/audit_web_dashboard_endpoints.py) — Audit web dashboard endpoints with names-only response evidence.
   - [`check_pidfiles_status.py`](scripts/repo/audit/check_pidfiles_status.py) — Check whether PID-file-referenced processes are running.
+- Setup:
+  - [`setup_student_env.py`](scripts/repo/setup/setup_student_env.py) — Create/use a venv and configure Jupyter for VS Code (default non-interactive; `--interactive` prompt mode).
 
 ## Quick start
 
@@ -73,6 +81,18 @@ A small library of standalone scripts that are useful for students doing data sc
   - `pip install -r requirements.txt`
 - Full (includes optional heavier deps like matplotlib / scikit-learn / pyarrow):
   - `pip install -r requirements-full.txt`
+
+TensorFlow course profile (Python 3.13 required):
+
+- create a Python 3.13 venv/interpreter
+- run setup automation with `--deps tensorflow-class`
+
+## Tutorials
+
+- [`tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`](tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md) — OS-agnostic setup hub.
+- [`tutorials/VENV_JUPYTER_WINDOWS.md`](tutorials/VENV_JUPYTER_WINDOWS.md) — Windows walkthrough.
+- [`tutorials/VENV_JUPYTER_MACOS.md`](tutorials/VENV_JUPYTER_MACOS.md) — macOS walkthrough.
+- [`tutorials/VENV_JUPYTER_LINUX.md`](tutorials/VENV_JUPYTER_LINUX.md) — Linux walkthrough.
 
 ## Dependencies
 
@@ -89,11 +109,30 @@ Optional dependency map (by feature):
 - ML evaluation: `scikit-learn` (`scripts/ml/model_eval_report.py`)
 - Parquet: `pyarrow` (`scripts/data/parquet_inspect.py`)
 - PDF (web exporter): `nbconvert[webpdf]` (`scripts/notebooks/export_notebook.py`)
+- TensorFlow-class setup profile: `--deps tensorflow-class` in `scripts/repo/setup/setup_student_env.py` (requires Python 3.13)
 
 ## Notes
 
 - These scripts are intended to be copy-paste friendly.
 - Outputs like `.html` and `.pdf` are ignored by default via `.gitignore`.
+
+## Maintenance
+
+Run maintenance from this repository root:
+
+```text
+python maintain.py
+```
+
+Fast path (skip pytest and duplicate scan):
+
+```text
+python maintain.py --quick
+```
+
+This command keeps quality artifacts current (inventory/test surface, duplicate-scan, baseline drift signal, and `CODE_QUALITY_AUDIT_REPORT.md`).
+
+For details and optional flags, see `MAINTENANCE.md`.
 
 ---
 

@@ -9,6 +9,7 @@ These scripts are “report-first” utilities: they produce artifacts you can r
 - `inventory/` — build inventories of scripts/files and export to CSV
 - `analysis/` — code analysis utilities (duplicate detection)
 - `audit/` — operational audit utilities (log evidence + remediation triage)
+- `setup/` — student-friendly environment bootstrap (venv + Jupyter setup)
 
 ## Usage examples
 
@@ -71,4 +72,21 @@ Check process PID files:
 ```text
 python scripts/repo/audit/check_pidfiles_status.py --pidfile agent=./agent.pid --pidfile dashboard=./dashboard.pid --json
 ```
+
+Set up an environment for coursework (default non-interactive):
+
+```text
+python scripts/repo/setup/setup_student_env.py
+```
+
+TensorFlow class profile (Python 3.13 required):
+
+```text
+python scripts/repo/setup/setup_student_env.py --deps tensorflow-class --python <python3.13>
+```
+
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- Security guidance: `SECURITY.md`
 

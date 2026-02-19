@@ -22,6 +22,20 @@ pip install -r requirements.txt
 pytest
 ```
 
+If you are working on TensorFlow-class coursework, use Python 3.13 with:
+
+```text
+python scripts/repo/setup/setup_student_env.py --deps tensorflow-class --python <python3.13>
+```
+
+Before opening a PR, also run:
+
+```text
+python maintain.py
+```
+
+This keeps public quality artifacts current and catches maintenance regressions early.
+
 ## Style
 
 - Keep scripts readable and beginner-friendly

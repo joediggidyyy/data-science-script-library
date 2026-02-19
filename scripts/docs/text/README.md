@@ -22,3 +22,8 @@ Modify files in place (writes backups):
 python scripts/docs/text/clean_unicode.py . --ext .md --inplace --backup-suffix .bak
 ```
 
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- Security guidance: `SECURITY.md`
+

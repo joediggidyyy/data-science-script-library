@@ -37,3 +37,8 @@ Plot threshold impact:
 ```text
 python scripts/plots/plot_threshold_impact.py scores.csv 0.12 out/threshold_impact.png
 ```
+
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- Security guidance: `SECURITY.md`

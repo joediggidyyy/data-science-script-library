@@ -14,3 +14,8 @@ Run the simulator against a graph JSON file:
 python scripts/benchmarks/benchmark_simulator.py --graph graph.json
 ```
 
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- Security guidance: `SECURITY.md`
+

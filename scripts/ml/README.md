@@ -80,3 +80,9 @@ Score records with the trained model:
 python scripts/ml/score_unsupervised_model.py --dataset out/dataset/dataset_manifest.json --model out/model/train_manifest.json --out-file out/scores/scores.csv
 ```
 
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- TensorFlow class profile (Python 3.13): `scripts/repo/setup/setup_student_env.py --deps tensorflow-class --python <python3.13>`
+- Security guidance: `SECURITY.md`
+

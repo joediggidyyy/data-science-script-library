@@ -28,3 +28,8 @@ Add additional prefixes to flag (repeatable):
 python scripts/docs/markdown/check_command_blocks.py . --prefix conda --prefix uv
 ```
 
+## Related docs
+
+- Setup/tutorial hub: `tutorials/VENV_AND_JUPYTER_VSCODE_TUTORIAL.md`
+- Security guidance: `SECURITY.md`
+
