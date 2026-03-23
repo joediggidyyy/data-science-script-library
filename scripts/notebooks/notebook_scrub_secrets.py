@@ -4,6 +4,7 @@ Scrub a Jupyter notebook (.ipynb) to make it safer to share.
 
 Features:
 - Redact common secret/token patterns in cell sources and (optionally) outputs.
+- Redact common local filesystem paths for safer public sharing.
 - Clear outputs and execution counts.
 - Remove cell attachments.
 - Optionally strip most notebook metadata.
@@ -42,7 +43,7 @@ class ScrubReport:
 _REPLACEMENT = "[REDACTED]"
 
 
-def _default_redaction_patterns() -> List[Tuple[str, re.Pattern]]:
+def _default_redaction_patterns(*, redact_local_paths: bool = True) -> List[Tuple[str, re.Pattern]]:
     """Return (name, compiled_regex) patterns to redact.
 
     Patterns are intentionally conservative; the goal is to catch common leaks.
@@ -84,6 +85,37 @@ def _default_redaction_patterns() -> List[Tuple[str, re.Pattern]]:
             re.DOTALL,
         ),
     ]
+
+    if redact_local_paths:
+        raw.extend(
+            [
+                (
+                    "win_temp_ipykernel_path",
+                    r"[A-Za-z]:(?:\\)+Users(?:\\)+[^\s\r\n\"]+?(?:\\)+AppData(?:\\)+Local(?:\\)+Temp(?:\\)+ipykernel_\d+(?:\\)+\d+\.py(?::\d+)?",
+                    0,
+                ),
+                (
+                    "win_drive_path",
+                    r"[A-Za-z]:(?:\\)+[^\s\r\n\"]+",
+                    0,
+                ),
+                (
+                    "posix_users_path",
+                    r"(?<!https:)(?<!http:)(?<!file:)/Users/[^\s\r\n\"]+",
+                    0,
+                ),
+                (
+                    "posix_home_path",
+                    r"(?<!https:)(?<!http:)(?<!file:)/home/[^\s\r\n\"]+",
+                    0,
+                ),
+                (
+                    "posix_tmp_path",
+                    r"(?<!https:)(?<!http:)(?<!file:)/tmp/[^\s\r\n\"]+",
+                    0,
+                ),
+            ]
+        )
 
     compiled: List[Tuple[str, re.Pattern]] = []
     for name, pattern, flags in raw:
@@ -137,10 +169,15 @@ def scrub_notebook_node(
     strip_execution_counts: bool = True,
     remove_attachments: bool = True,
     redact: bool = True,
+    redact_local_paths: bool = True,
     patterns: Optional[Sequence[Tuple[str, re.Pattern]]] = None,
     strip_all_metadata: bool = False,
 ) -> Tuple[Any, ScrubReport]:
-    patterns = _default_redaction_patterns() if patterns is None else list(patterns)
+    patterns = (
+        _default_redaction_patterns(redact_local_paths=redact_local_paths)
+        if patterns is None
+        else list(patterns)
+    )
 
     cells_total = 0
     cells_redacted = 0
@@ -235,6 +272,7 @@ def scrub_notebook_file(
     strip_execution_counts: bool,
     remove_attachments: bool,
     redact: bool,
+    redact_local_paths: bool,
     strip_all_metadata: bool,
 ) -> ScrubReport:
     input_path = input_path.resolve()
@@ -249,6 +287,7 @@ def scrub_notebook_file(
         strip_execution_counts=strip_execution_counts,
         remove_attachments=remove_attachments,
         redact=redact,
+        redact_local_paths=redact_local_paths,
         strip_all_metadata=strip_all_metadata,
     )
 
@@ -291,6 +330,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     parser.add_argument(
         "--no-redact", action="store_true", help="Disable secret redaction"
+    )
+    parser.add_argument(
+        "--keep-local-paths",
+        action="store_true",
+        help="Do not redact local filesystem paths embedded in notebook content",
     )
     parser.add_argument(
         "--keep-outputs",
@@ -336,6 +380,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         strip_execution_counts=not bool(args.keep_execution_counts),
         remove_attachments=not bool(args.keep_attachments),
         redact=not bool(args.no_redact),
+        redact_local_paths=not bool(args.keep_local_paths),
         strip_all_metadata=bool(args.strip_all_metadata),
     )
 

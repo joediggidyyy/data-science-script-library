@@ -14,6 +14,7 @@ Use these scripts to export notebooks for sharing, scrub secrets/outputs, and ru
 - `notebook_scrub_secrets.py`
   - Scrub a notebook for sharing:
     - redact common secret/token patterns
+    - redact common local filesystem paths
     - clear outputs + execution counts
     - remove attachments
     - optionally strip most metadata

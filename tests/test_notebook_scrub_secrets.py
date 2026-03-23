@@ -94,3 +94,22 @@ def test_cli_writes_scrubbed_notebook_and_report(tmp_path: Path) -> None:
     assert report_path.exists()
     data = json.loads(report_path.read_text(encoding="utf-8"))
     assert data["cells_total"] == 2
+
+
+def test_scrub_notebook_node_redacts_local_paths() -> None:
+    script_path = scripts_root() / "notebooks" / "notebook_scrub_secrets.py"
+    mod = import_module_from_path("notebook_scrub_secrets_paths", script_path)
+
+    nb = nbformat.v4.new_notebook()
+    nb.cells = [
+        nbformat.v4.new_markdown_cell(
+            "Windows path C:\\Users\\alice\\project\\note.txt and POSIX path /home/alice/tmp/file.txt"
+        )
+    ]
+
+    scrubbed, report = mod.scrub_notebook_node(nb)
+    text = scrubbed.cells[0].source
+    assert "C:\\Users\\alice" not in text
+    assert "/home/alice/tmp/file.txt" not in text
+    assert "[REDACTED]" in text
+    assert report.replacements_total >= 2

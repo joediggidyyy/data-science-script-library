@@ -28,6 +28,7 @@ This project is intentionally operated with two complementary outcomes:
 ### Docs
 - [`convert_to_pdf.py`](scripts/docs/convert_to_pdf.py) — Convert Markdown to PDF (basic formatting).
 - [`md_to_slides.py`](scripts/docs/md_to_slides.py) — Convert Markdown to a reveal.js HTML slide deck.
+- [`extract_pdf_text.py`](scripts/docs/pdf/extract_pdf_text.py) — Extract text from one PDF or a directory of PDFs using best-effort backend fallback.
 - [`check_command_blocks.py`](scripts/docs/markdown/check_command_blocks.py) — Flag plaintext command lines outside fenced code blocks.
 - [`clean_unicode.py`](scripts/docs/text/clean_unicode.py) — Replace common unicode punctuation/symbols with ASCII-safe equivalents.
 
@@ -43,7 +44,7 @@ This project is intentionally operated with two complementary outcomes:
 
 ### Notebooks
 - [`export_notebook.py`](scripts/notebooks/export_notebook.py) — Export `.ipynb` to HTML/PDF (supports tag-based removal).
-- [`notebook_scrub_secrets.py`](scripts/notebooks/notebook_scrub_secrets.py) — Redact common secret patterns + clear outputs for safer sharing.
+- [`notebook_scrub_secrets.py`](scripts/notebooks/notebook_scrub_secrets.py) — Redact common secret patterns and local filesystem paths + clear outputs for safer sharing.
 - [`notebook_parameter_sweep.py`](scripts/notebooks/notebook_parameter_sweep.py) — Inject a `parameters` cell and run a notebook over a parameter grid.
 - [`notebooks/first_week_lab_template.ipynb`](notebooks/first_week_lab_template.ipynb) — Starter lab notebook template (data load + simple plot + reflection prompt).
 
@@ -60,12 +61,14 @@ This project is intentionally operated with two complementary outcomes:
 - Analysis:
   - [`find_duplicate_functions.py`](scripts/repo/analysis/find_duplicate_functions.py) — Find exact duplicate function bodies.
   - [`find_near_duplicate_functions.py`](scripts/repo/analysis/find_near_duplicate_functions.py) — Find near-duplicate functions via AST-normalized similarity.
+  - [`trace_authority_propagation.py`](scripts/repo/analysis/trace_authority_propagation.py) — Trace downstream update candidates from an authority file using configurable regex patterns.
 - Audit:
   - [`audit_vscode_crash_logs.py`](scripts/repo/audit/audit_vscode_crash_logs.py) — Collect VS Code crash/instability evidence from local logs.
   - [`triage_vscode_crash_remediation.py`](scripts/repo/audit/triage_vscode_crash_remediation.py) — Generate remediation triage from crash evidence (+ optional attribution).
   - [`audit_repo_health_snapshot.py`](scripts/repo/audit/audit_repo_health_snapshot.py) — Snapshot repository hygiene findings (tracked-path and ignore-policy checks).
   - [`audit_runtime_artifacts_snapshot.py`](scripts/repo/audit/audit_runtime_artifacts_snapshot.py) — Snapshot runtime heartbeat/telemetry/log artifact freshness.
   - [`audit_status_drift.py`](scripts/repo/audit/audit_status_drift.py) — Audit status drift between task SSOT, dashboards, and task documents.
+  - [`audit_env_var_registry.py`](scripts/repo/audit/audit_env_var_registry.py) — Audit env-var usage against optional registry inputs with names-only reports and prefix summaries.
   - [`report_runtime_parameters.py`](scripts/repo/audit/report_runtime_parameters.py) — Report runtime parameter surface (env names + path checks, names-only).
   - [`audit_web_dashboard_endpoints.py`](scripts/repo/audit/audit_web_dashboard_endpoints.py) — Audit web dashboard endpoints with names-only response evidence.
   - [`check_pidfiles_status.py`](scripts/repo/audit/check_pidfiles_status.py) — Check whether PID-file-referenced processes are running.
@@ -109,6 +112,7 @@ Optional dependency map (by feature):
 - ML evaluation: `scikit-learn` (`scripts/ml/model_eval_report.py`)
 - Parquet: `pyarrow` (`scripts/data/parquet_inspect.py`)
 - PDF (web exporter): `nbconvert[webpdf]` (`scripts/notebooks/export_notebook.py`)
+- PDF text extraction: one of `pypdf`, `PyPDF2`, `PyMuPDF`, or `pdfminer.six` (`scripts/docs/pdf/extract_pdf_text.py`)
 - TensorFlow-class setup profile: `--deps tensorflow-class` in `scripts/repo/setup/setup_student_env.py` (requires Python 3.13)
 
 ## Notes

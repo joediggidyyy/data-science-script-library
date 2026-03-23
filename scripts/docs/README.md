@@ -10,6 +10,7 @@ Documentation utilities for validating, converting, and publishing Markdown.
 ## Subdirectories
 
 - `markdown/` — Markdown hygiene checks (style, command fencing)
+- `pdf/` — PDF ingestion helpers (extract text from PDFs via best-effort backend fallback)
 - `text/` — Text transforms (unicode cleanup)
 
 ## Usage examples
@@ -24,6 +25,18 @@ Convert Markdown to reveal.js slides:
 
 ```text
 python scripts/docs/md_to_slides.py talk.md talk.html
+```
+
+Extract text from a single PDF:
+
+```text
+python scripts/docs/pdf/extract_pdf_text.py --pdf paper.pdf --out paper.extracted.txt
+```
+
+Extract text from a directory of PDFs and write a manifest:
+
+```text
+python scripts/docs/pdf/extract_pdf_text.py --input-dir docs/papers --output-dir report_tmp/pdf_extract --write-manifest
 ```
 
 Scan a docs folder and flag plaintext command lines outside fenced code blocks:

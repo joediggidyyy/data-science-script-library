@@ -43,6 +43,12 @@ Audit repository hygiene snapshot:
 python scripts/repo/audit/audit_repo_health_snapshot.py --repo-root . --dry-run
 ```
 
+Audit env-var usage against a registry (names-only):
+
+```text
+python scripts/repo/audit/audit_env_var_registry.py --repo-root . --registry-json env_registry.json --project-prefix MYAPP_
+```
+
 Audit runtime artifacts snapshot:
 
 ```text
