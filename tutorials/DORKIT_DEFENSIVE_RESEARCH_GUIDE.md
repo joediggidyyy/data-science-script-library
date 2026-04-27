@@ -10,7 +10,8 @@ This tutorial adds a defensive-research bridge between the Data Science Script L
 
 ## Canonical source in this workspace
 
-- Dorkit handbook source: [`../dorkit/google_dorking_handbook_20260418.md`](../../dorkit/google_dorking_handbook_20260418.md)
+- Dorkit handbook source is maintained outside this repository and is not publicly linked here yet.
+- Public reference in this repo: [`DORKIT_DEFENSIVE_RESEARCH_GUIDE.md`](DORKIT_DEFENSIVE_RESEARCH_GUIDE.md)
 
 ## Suggested learning path
 
