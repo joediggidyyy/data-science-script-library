@@ -96,6 +96,7 @@ TensorFlow course profile (Python 3.13 required):
 - [`tutorials/VENV_JUPYTER_WINDOWS.md`](tutorials/VENV_JUPYTER_WINDOWS.md) — Windows walkthrough.
 - [`tutorials/VENV_JUPYTER_MACOS.md`](tutorials/VENV_JUPYTER_MACOS.md) — macOS walkthrough.
 - [`tutorials/VENV_JUPYTER_LINUX.md`](tutorials/VENV_JUPYTER_LINUX.md) — Linux walkthrough.
+- [`tutorials/DORKIT_DEFENSIVE_RESEARCH_GUIDE.md`](tutorials/DORKIT_DEFENSIVE_RESEARCH_GUIDE.md) — Dorkit defensive research bridge tutorial.
 
 ## Dependencies
 

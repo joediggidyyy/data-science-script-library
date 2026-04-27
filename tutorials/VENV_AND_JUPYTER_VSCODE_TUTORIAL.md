@@ -16,6 +16,10 @@ Audience: computer science students (beginner-friendly).
 - **macOS:** `tutorials/VENV_JUPYTER_MACOS.md`
 - **Linux:** `tutorials/VENV_JUPYTER_LINUX.md`
 
+Additional tutorial:
+
+- **Dorkit defensive research guide:** `tutorials/DORKIT_DEFENSIVE_RESEARCH_GUIDE.md`
+
 These guides are split to avoid OS-command confusion.
 
 ---
